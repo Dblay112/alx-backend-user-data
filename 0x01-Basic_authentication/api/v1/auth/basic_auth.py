@@ -17,6 +17,8 @@ class BasicAuth(Auth):
 
     def extract_base64_authorization_header(self, authorization_header: str) -> str:
         """Extract_base64_authorization_header method"""
-        if not authorization_header or not isinstance(authorization_header, str) or authorization_header[:6] != 'Basic ':
+        if not authorization_header \
+                or not isinstance(authorization_header, str) \
+                or authorization_header[:6] != 'Basic ':
             return None
         return " ".join(authorization_header.split(' ')[1:])
