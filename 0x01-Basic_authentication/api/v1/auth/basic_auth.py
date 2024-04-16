@@ -15,7 +15,8 @@ class BasicAuth(Auth):
         """Initialization of BasicAuth class"""
         super().__init__()
 
-    def extract_base64_authorization_header(self, authorization_header: str) -> str:
+    def extract_base64_authorization_header(self, authorization_header: 
+                                            str) -> str:
         """Extract_base64_authorization_header method"""
         if not authorization_header \
                 or not isinstance(authorization_header, str) \
