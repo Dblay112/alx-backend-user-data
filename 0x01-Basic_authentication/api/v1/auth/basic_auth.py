@@ -20,5 +20,3 @@ class BasicAuth(Auth):
         if not authorization_header or not isinstance(authorization_header, str) or authorization_header[:6] != 'Basic ':
             return None
         return " ".join(authorization_header.split(' ')[1:])
-        
-        
