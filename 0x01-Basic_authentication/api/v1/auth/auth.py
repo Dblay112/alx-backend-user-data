@@ -21,6 +21,38 @@ class Auth:
                 return False
         return True
 
+
+    def decode_base64_authorization_header(self,
+                                           base64_authorization_header: str) -> str:
+        """
+        method to decode the value of a Base64 string base64_authorization_header
+        """
+        try:
+            base64_bytes = base64_authorization_header.encode("utf-8")
+
+            string_bytes_base64 = base64.b64decode(base64_bytes)
+
+            return string_bytes_base64.decode("utf-8")
+
+        except Exception:
+            return None
+
+    def extract_user_credentials(self, decoded_base64_authorization_header: str) -> (str, str):
+        """
+        method that returns the user email and password from the Base64 decoded value.
+        """
+        if decoded_base64_authorization_header is None or \
+           not isinstance(decoded_base64_authorization_header, str) or \
+           ':' not in decoded_base64_authorization_header:
+            return None, None
+
+        pos = decoded_base64_authorization_header.find(':')
+
+        email = decoded_base64_authorization_header[:pos]
+        password = decoded_base64_authorization_header[pos + 1:]
+
+        return email, password
+
     def authorization_header(self, request=None) -> str:
         """authorization header method"""
         if not request:
