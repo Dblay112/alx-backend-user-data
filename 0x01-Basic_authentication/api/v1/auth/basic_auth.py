@@ -9,7 +9,4 @@ import base64
 
 
 class BasicAuth(Auth):
-  """base class for basic authentication
-  inherits Auth class
-  """
-  pass  
+    """Basic authentication class."""
