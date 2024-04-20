@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-module for authentication
+mdodule fo authentication
 """
 from os import getenv
 from flask import request
@@ -9,11 +9,11 @@ from typing import List, TypeVar
 
 class Auth:
     """
-    base class for authentication
+    base class authentication module for the api.
     """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
-        docs
+        Checks if the end point is required to authenticate.
         """
         if not path or not excluded_paths:
             return True
@@ -27,7 +27,7 @@ class Auth:
 
     def authorization_header(self, request=None) -> str:
         """
-        authorization header method
+        Returns the Authorization header.
         """
         if not request:
             return None
@@ -39,3 +39,14 @@ class Auth:
         Returns the current active user.
         """
         return None
+
+    def session_cookie(self, request=None):
+        """
+        Returns a cookie value from a request.
+        """
+        if request is None:
+            return None
+
+        cookie_name = getenv('SESSION_NAME')
+
+        return request.cookies.get(cookie_name)
