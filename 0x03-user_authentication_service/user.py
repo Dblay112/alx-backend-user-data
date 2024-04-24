@@ -4,6 +4,7 @@
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
+from typing import Optional
 
 Base = declarative_base()
 
