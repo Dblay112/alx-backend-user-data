@@ -1,12 +1,16 @@
 #!/ur/bin/env python3
 """user module"""
+
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from typing import Optional
+
 Base = declarative_base()
 
 
 class User(Base):
+    """user model"""
+    
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
